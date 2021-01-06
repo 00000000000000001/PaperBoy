@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 public class PaperBoy extends JFrame {
 	JPanel panel1 = new JPanel(new BorderLayout());
 	JPanel panel2 = new JPanel(new BorderLayout());
@@ -19,7 +21,8 @@ public class PaperBoy extends JFrame {
     public PaperBoy() {
         button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Search(textField.getText()).start();
+				new Search(URLEncoder.encode(textField.getText(),
+						StandardCharsets.UTF_8)).start();
 			}
 		});
 		panel1.add(textField, BorderLayout.NORTH);
